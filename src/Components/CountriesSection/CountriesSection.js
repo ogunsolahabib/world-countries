@@ -2,8 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import CountriesContainer from "./CountriesContainer";
+import Axios from "axios";
 
 class CountriesSection extends React.Component {
+  state = { isLoading: false, value: "", countries: [] };
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+    event.preventDefault();
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.value !== "" && this.state.value !== prevState.value) {
+      //   this.setState({ isLoading: true });
+      //   Axios.get(
+      //     "https://restcountries.eu/rest/v2/name/" + this.state.value
+      //   ).then(response => this.setState({ countries: response.data }));
+      console.log(prevState.value);
+    }
+  }
   render() {
     return (
       <div>
@@ -14,7 +30,12 @@ class CountriesSection extends React.Component {
                 <div className="ui eight wide column">
                   <div className="ui left icon input element">
                     <i className="search icon" />
-                    <input type="text" placeholder="Search for a country..." />
+                    <input
+                      value={this.state.value}
+                      onInput={this.handleChange.bind(this)}
+                      type="text"
+                      placeholder="Search for a country..."
+                    />
                   </div>
                 </div>
                 <div className="ui six wide column">
@@ -52,7 +73,13 @@ class CountriesSection extends React.Component {
               </div>
             </div>
           </section>
-          <CountriesContainer countries={this.props.countries} />
+          <CountriesContainer
+            countries={
+              this.state.countries.length === 0
+                ? this.props.countries
+                : this.state.countries
+            }
+          />
         </div>
       </div>
     );

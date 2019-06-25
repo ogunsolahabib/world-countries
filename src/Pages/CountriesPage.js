@@ -3,19 +3,21 @@ import CountriesSection from "../Components/CountriesSection/CountriesSection";
 import Loader from "../Components/Loader";
 
 import Axios from "axios";
+import Header from "../Components/Header";
 
 class CountriesPage extends React.Component {
   state = {
-    stylePath: "darkmode.css",
-    styleMode: "Dark",
+    stylePath: this.props.stylePath,
+    styleMode: this.props.styleMode,
     countries: [],
+
     isLoading: true
   };
-  switchTheme() {
-    if (this.state.stylePath === "darkmode.css") {
-      this.setState({ stylePath: "lightmode.css", styleMode: "Light" });
-    } else {
-      this.setState({ stylePath: "darkmode.css", styleMode: "Dark" });
+  checkLoad() {
+    if (this.state.isLoading) {
+      return <Loader />;
+    } else if (this.state.countries) {
+      return <CountriesSection countries={this.state.countries} />;
     }
   }
   componentDidMount() {
@@ -27,49 +29,35 @@ class CountriesPage extends React.Component {
   render() {
     return (
       <div>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href={"/" + this.state.stylePath}
+        <Header
+          switchTheme={this.props.switchTheme}
+          stylePath={this.props.stylePath}
+          styleMode={this.props.styleMode}
         />
-        <header className="ui menu" id="header">
-          <div className="ui container">
-            <div className="ui left item header">Where in the world?</div>
-            <div className="ui right item ">
-              <button
-                className="ui labeled icon button element"
-                onClick={this.switchTheme.bind(this)}
-              >
-                <i className="moon icon" />
-                <span>{this.state.styleMode} Mode</span>
-              </button>
-            </div>
-          </div>
-        </header>
-        {this.state.isLoading ? (
-          <Loader />
-        ) : (
-          <CountriesSection
-            countries={this.state.countries}
-            style={this.state.stylePath}
-          />
-        )}
+        {this.checkLoad()}
       </div>
     );
   }
   componentDidUpdate(prevProps) {
-    if (this.props.regionName && this.props.regionName !== prevProps) {
+    if (
+      this.props.regionName &&
+      this.props.regionName !== prevProps.regionName
+    ) {
+      this.setState({ isLoading: true });
       Axios.get(
         "https://restcountries.eu/rest/v2/region/" + this.props.regionName
       ).then(response => {
         this.setState({ countries: response.data, isLoading: false });
         console.log(this.state.countries);
       });
+    } else if (!this.props.regionName && prevProps.regionName) {
+      this.setState({isLoading:true})
+      Axios.get("https://restcountries.eu/rest/v2/all").then(response => {
+        this.setState({ countries: response.data, isLoading: false });
+        console.log(this.state.countries);
+      });
     }
   }
 }
-
-CountriesPage.defaultProps = {
-  region: ""
-};
+CountriesPage.defaultProps = { regionName: null };
 export default CountriesPage;

@@ -1,87 +1,84 @@
 import React from "react";
-const CountryInfoPage = props => {
-  return (
-    <div>
-      <div className="ui container content">
-        <section id="back-btn">
-          <div className="ui labeled icon button element">
-            <i className="long arrow left alternate large icon" />
-            Back
-          </div>
-        </section>
-        <section id="country-info">
-          <div className="ui container stackable grid ">
-            <div className="eight wide column">
-              <div className="ui image">
-                <img
-                  src="https://via.placeholder.com/500x300"
-                  alt="placeholder"
-                />
-              </div>
+import Header from "../Components/Header";
+import Loader from "../Components/Loader";
+
+import CountryInfo from "../Components/CountryInfo/CountryInfo";
+import Axios from "axios";
+class CountryInfoPage extends React.Component {
+  state = { isLoading: true, country: null, borders: [] };
+  checkLoad() {
+    if (this.state.isLoading) {
+      return <Loader />;
+    } else {
+      return (
+        <CountryInfo
+          country={this.state.country}
+          countryName={this.props.countryName}
+        />
+      );
+    }
+  }
+  componentDidMount() {
+    Axios.get(
+      "https://restcountries.eu/rest/v2/name/" +
+        this.props.countryName +
+        "?fullText=true"
+    ).then(response => {
+      if (response) {
+        this.setState({ isLoading: false, country: response.data[0] });
+        console.log(this.state.country);
+        for (let i = 0; i < this.state.country.borders; i++) {
+          Axios.get("https://restcountries.eu/rest/v2/alpha/" + i).then(
+            response => {
+              this.setState({ borders: response.data });
+              console.log(this.state.borders);
+            }
+          );
+        }
+      }
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Header
+          switchTheme={this.props.switchTheme}
+          stylePath={this.props.stylePath}
+          styleMode={this.props.styleMode}
+        />
+        <div className="ui container content">
+          <section id="back-btn">
+            <div className="ui labeled icon button element">
+              <i className="long arrow left alternate large icon" />
+              Back
             </div>
-            <div className="eight wide column">
-              <div className="content">
-                <div className="ui huge header">Belgium</div>
-              </div>
-              <div className="ui stackable grid">
-                <div className="eight wide column">
-                  <div className="ui content">
-                    <li className="item">
-                      <span className="ui small header">Native Name: </span>
-                      Belgie
-                    </li>
-                    <li className="item">
-                      <span className="ui small header">Population: </span>
-                      11,319,511
-                    </li>
-                    <li className="item">
-                      <span className="ui small header">Region: </span>Europe
-                    </li>
-                    <li className="item">
-                      <span className="ui small header">Sub Region: </span>
-                      Western Europe
-                    </li>
-                    <li className="item">
-                      <span className="ui small header">Capital: </span>
-                      Brussels
-                    </li>
-                  </div>
-                </div>
-                <div className="eight wide column">
-                  <div className="ui content">
-                    <li className="item">
-                      <span className="ui small header">
-                        Top Level Domain:{" "}
-                      </span>
-                      .de
-                    </li>
-                    <li className="item">
-                      <span className="ui small header">Currencies: </span>
-                      Euro
-                    </li>
-                    <li className="item">
-                      <span className="ui small header">Languages: </span>
-                      Dutch, French, German
-                    </li>
-                  </div>
-                </div>
-              </div>
-              <div className="ui stackable grid">
-                <span className="ui header six wide column">
-                  Border Countries:{" "}
-                </span>
-                <div className="ten wide column">
-                  {" "}
-                  <button className="ui button element">France</button>
-                  <button className="ui button element">Germany</button>
-                  <button className="ui button element">Neitherlands</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+          {this.checkLoad()}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.countryName !== prevProps) {
+      Axios.get(
+        "https://restcountries.eu/rest/v2/name/" +
+          this.props.countryName +
+          "?fullText=true"
+      ).then(response => {
+        if (response) {
+          this.setState({ isLoading: false, country: response.data[0] });
+          console.log(this.state.country);
+          for (let i = 0; i < this.state.country.borders; i++) {
+            Axios.get("https://restcountries.eu/rest/v2/alpha/" + i).then(
+              response => {
+                this.setState({ borders: response.data });
+                console.log(this.state.borders);
+              }
+            );
+          }
+        }
+      });
+    }
+  }
+}
 export default CountryInfoPage;
