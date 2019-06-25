@@ -14,7 +14,7 @@ const Country = props => {
     capital: props.info.capital
   };
   return (
-    <Link to={"/country/" + info.name}>
+    <Link className="country" to={"/country/" + info.name}>
       <div className="ui link cards">
         <div className="card element">
           <div className="image">

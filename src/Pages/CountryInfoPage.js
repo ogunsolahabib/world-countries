@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Components/Header";
 import Loader from "../Components/Loader";
+import { Link } from "react-router-dom";
 
 import CountryInfo from "../Components/CountryInfo/CountryInfo";
 import Axios from "axios";
@@ -47,12 +48,14 @@ class CountryInfoPage extends React.Component {
           styleMode={this.props.styleMode}
         />
         <div className="ui container content">
-          <section id="back-btn">
-            <div className="ui labeled icon button element">
-              <i className="long arrow left alternate large icon" />
-              Back
-            </div>
-          </section>
+          <Link to="/">
+            <section id="back-btn">
+              <div className="ui labeled icon button element">
+                <i className="long arrow left alternate large icon" />
+                Back
+              </div>
+            </section>
+          </Link>
           {this.checkLoad()}
         </div>
       </div>

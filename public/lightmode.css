@@ -2,6 +2,10 @@ body {
   background: hsl(0, 0%, 98%) !important;
   color: hsl(200, 15%, 8%) !important;
 }
+a {
+  margin: 1em 0 !important;
+  padding: 0 !important;
+}
 header#header {
   margin: 0 0 1em 0;
 }

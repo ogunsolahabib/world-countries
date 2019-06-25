@@ -1,23 +1,64 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 import CountriesContainer from "./CountriesContainer";
 import Axios from "axios";
 
 class CountriesSection extends React.Component {
-  state = { isLoading: false, value: "", countries: [] };
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-    event.preventDefault();
-  }
+  state = {
+    isLoading: false,
+    value: "",
+    typing: false,
+    typingTimeout: 0,
+    countries: []
+  };
 
-  componentDidUpdate(prevState) {
+  searchCountry(value) {
+    if (value !== "") {
+      console.log(value);
+      Axios.get("https://restcountries.eu/rest/v2/name/" + value).then(
+        response => {
+          this.setState({ isLoading: false, countries: response.data });
+          console.log(response);
+        }
+      );
+    }
+  }
+  changeName = event => {
+    const self = this;
+
+    if (self.state.typingTimeout) {
+      clearTimeout(self.state.typingTimeout);
+    }
+
+    self.setState({
+      value: event.target.value,
+      typing: false,
+      typingTimeout: setTimeout(function() {
+        self.searchCountry(self.state.value);
+      }, 1000)
+    });
+  };
+  checkLoad() {
+    if (this.state.isLoading) {
+      return <Loader />;
+    } else {
+      return (
+        <CountriesContainer
+          countries={
+            this.state.countries.length === 0
+              ? this.props.countries
+              : this.state.countries
+          }
+        />
+      );
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.value !== "" && this.state.value !== prevState.value) {
-      //   this.setState({ isLoading: true });
-      //   Axios.get(
-      //     "https://restcountries.eu/rest/v2/name/" + this.state.value
-      //   ).then(response => this.setState({ countries: response.data }));
-      console.log(prevState.value);
+      this.setState({ isLoading: true });
+      this.searchCountry(this.state.value);
     }
   }
   render() {
@@ -32,7 +73,7 @@ class CountriesSection extends React.Component {
                     <i className="search icon" />
                     <input
                       value={this.state.value}
-                      onInput={this.handleChange.bind(this)}
+                      onChange={this.changeName.bind(this)}
                       type="text"
                       placeholder="Search for a country..."
                     />
@@ -73,13 +114,8 @@ class CountriesSection extends React.Component {
               </div>
             </div>
           </section>
-          <CountriesContainer
-            countries={
-              this.state.countries.length === 0
-                ? this.props.countries
-                : this.state.countries
-            }
-          />
+
+          {this.checkLoad()}
         </div>
       </div>
     );

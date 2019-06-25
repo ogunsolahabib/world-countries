@@ -2,7 +2,10 @@ body {
   background: hsl(207, 26%, 17%) !important;
   color: #fff !important;
 }
-
+a {
+  margin: 1em 0 !important;
+  padding: 0 !important;
+}
 header#header {
   margin: 0 0 1em 0;
 }
@@ -36,6 +39,7 @@ header,
 div.ui.cards {
   padding: 2em 0em !important;
 }
+
 div.card.element {
   margin: 1em !important;
   height: 30em !important;
