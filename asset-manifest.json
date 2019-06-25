@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/world-countries/static/js/main.fce81de5.chunk.js",
+    "main.js.map": "/world-countries/static/js/main.fce81de5.chunk.js.map",
+    "runtime~main.js": "/world-countries/static/js/runtime~main.c4bc1bef.js",
+    "runtime~main.js.map": "/world-countries/static/js/runtime~main.c4bc1bef.js.map",
+    "static/js/2.4f9f3b87.chunk.js": "/world-countries/static/js/2.4f9f3b87.chunk.js",
+    "static/js/2.4f9f3b87.chunk.js.map": "/world-countries/static/js/2.4f9f3b87.chunk.js.map",
+    "index.html": "/world-countries/index.html",
+    "precache-manifest.ed910a1d1e4574203d10602030fb9817.js": "/world-countries/precache-manifest.ed910a1d1e4574203d10602030fb9817.js",
+    "service-worker.js": "/world-countries/service-worker.js"
+  }
+}

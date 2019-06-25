@@ -1,0 +1,75 @@
+body {
+  background: hsl(0, 0%, 98%) !important;
+  color: hsl(200, 15%, 8%) !important;
+}
+a {
+  margin: 1em 0 !important;
+  padding: 0 !important;
+}
+header#header {
+  margin: 0 0 1em 0;
+}
+.header::before,
+.item::before {
+  width: 0 !important;
+}
+div,
+span {
+  color: hsl(200, 15%, 8%);
+}
+
+div.header,
+span.header,
+div.input,
+input,
+input::placeholder {
+  background: inherit !important;
+  color: hsl(200, 15%, 8%) !important;
+}
+div.element,
+button.button.element,
+button.button.element:hover,
+header,
+#filter,
+#filter .menu {
+  background: #fff !important;
+  color: hsl(200, 15%, 8%) !important;
+}
+div.ui.cards {
+  padding: 2em 0em !important;
+}
+div.card.element {
+  margin: 1em !important;
+  height: 30em !important;
+}
+div.card.element .image {
+  height: 45% !important;
+}
+div.card.element img {
+  height: 100% !important;
+}
+div.country-name-container.content {
+  height: 3em !important;
+}
+div.content {
+  margin-bottom: 2em;
+}
+div.button i {
+  color: hsl(200, 15%, 8%) !important;
+}
+li {
+  list-style-type: none;
+  margin-bottom: 1em;
+}
+section#back-btn {
+  margin-bottom: 5em;
+}
+#filter .menu .item {
+  background: inherit !important;
+  color: inherit !important;
+}
+#filter .menu .item:hover,
+.button:hover {
+  opacity: 0.8;
+  background: hsl(207, 26%, 26%) !important;
+}
