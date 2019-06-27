@@ -1,39 +1,25 @@
 import React from "react";
-import BorderCountry from "./BorderCountry";
-import Axios from "axios";
+import BorderCountriesSection from "./BorderCountriesSection";
 class CountryInfo extends React.Component {
   // console.log(props.country);
-  state = { borderCountries: [] };
-  componentDidMount() {
-    console.log(this.props.country.borders);
-    let bcs = [];
-    for (let i = 0; i < this.props.country.borders.length; i++) {
-      Axios.get(
-        "https://restcountries.eu/rest/v2/alpha/" +
-          this.props.country.borders[i]
-      ).then(response => {
-        bcs.push(response.data.name);
-        console.log(bcs);
-        this.setState({ borderCountries: bcs });
-      });
-    }
-
-    // console.log(bcs);
-  }
 
   render() {
+    const formatNumber = x => {
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    };
     const info = {
       flag: this.props.country.flag,
       name: this.props.country.name,
       nativeName: this.props.country.nativeName,
-      population: this.props.country.population,
+      population: formatNumber(this.props.country.population),
       region: this.props.country.region,
       subRegion: this.props.country.subRegion,
       capital: this.props.country.capital,
       topLevelDomain: this.props.country.topLevelDomain[0],
       currencies: this.props.country.currencies[0].name,
-      languages: this.props.country.languages,
-      borderCountries: this.state.borderCountries
+      languages: this.props.country.languages
     };
     return (
       <div>
@@ -104,12 +90,7 @@ class CountryInfo extends React.Component {
                   Border Countries:
                 </span>
                 <div className="ten wide column">
-                  {info.borderCountries.map((cur, i) => {
-                    return <BorderCountry countryName={cur} key={i} />;
-                  })}
-                  {/* <BorderCountry />
-                <BorderCountry />
-                <BorderCountry /> */}
+                  <BorderCountriesSection alphas={this.props.country.borders} />
                 </div>
               </div>
             </div>

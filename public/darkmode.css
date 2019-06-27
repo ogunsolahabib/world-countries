@@ -2,8 +2,8 @@ body {
   background: hsl(207, 26%, 17%) !important;
   color: #fff !important;
 }
-a {
-  margin: 1em 0 !important;
+.cards a {
+  margin: 1.5em 0 !important;
   padding: 0 !important;
 }
 header#header {

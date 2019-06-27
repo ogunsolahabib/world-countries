@@ -62,7 +62,7 @@ class CountryInfoPage extends React.Component {
     );
   }
   componentDidUpdate(prevProps) {
-    if (this.props.countryName !== prevProps) {
+    if (this.props.countryName !== prevProps.countryName) {
       Axios.get(
         "https://restcountries.eu/rest/v2/name/" +
           this.props.countryName +
