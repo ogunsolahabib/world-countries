@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 const Country = props => {
   const formatNumber = x => {
     var parts = x.toString().split(".");
@@ -14,7 +14,7 @@ const Country = props => {
     capital: props.info.capital
   };
   return (
-    <Link className="country" to={"/country/" + info.name}>
+    <Link id={info.name} className="country" to={"/country/" + info.name}>
       <div className="ui link cards">
         <div className="card element">
           <div className="image">

@@ -15,7 +15,9 @@ header#header {
 }
 
 div,
-span {
+span,
+.letterNav a,
+.header {
   color: #fff;
 }
 
@@ -74,4 +76,42 @@ section#back-btn {
 .button:hover {
   opacity: 0.8;
   background: hsl(207, 26%, 26%) !important;
+}
+
+div.letterNav {
+  margin-top: 10px;
+  max-height: 80vh;
+}
+div.letterNav div {
+  margin: 5px auto;
+}
+div.ui.container.main {
+  padding: 0 !important;
+  width: 80%;
+}
+div.no-results {
+  text-align: center;
+  margin-top: 5em;
+}
+@media only screen and (max-width: 767px) {
+  div.ui.link.cards {
+    padding: 28px 5% !important;
+    margin: 1em 5% !important;
+  }
+  div.letterNav {
+    margin-top: 0px;
+    max-height: 80vh;
+  }
+  div.letterNav div {
+    margin: 3px auto;
+  }
+}
+@media only screen and (max-width: 450px) {
+  div.ui.link.cards {
+    padding: 28px 1% !important;
+    /* margin: 1em 1% !important; */
+  }
+  div.letterNav {
+    display: none;
+  }
 }
