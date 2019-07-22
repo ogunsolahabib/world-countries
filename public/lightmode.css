@@ -73,14 +73,18 @@ section#back-btn {
 #filter .menu .item:hover,
 .button:hover {
   opacity: 0.8;
-  background: hsl(207, 26%, 26%) !important;
+  background: #f3f3f3 !important;
 }
 div.letterNav {
-  margin-top: 60px;
+  margin-top: 10px;
   max-height: 80vh;
 }
 div.letterNav div {
   margin: 5px auto;
+}
+div.ui.container.main {
+  padding: 0 !important;
+  width: 80%;
 }
 div.no-results {
   text-align: center;
