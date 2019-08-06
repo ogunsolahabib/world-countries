@@ -51,9 +51,14 @@ div.card.element .image {
 }
 div.card.element img {
   height: 100% !important;
+  object-fit: cover;
 }
 div.country-name-container.content {
   height: 3em !important;
+}
+div.country-name-container.content .huge.header {
+  display: inline-block !important;
+  margin: auto 0;
 }
 div.content {
   margin-bottom: 2em;
@@ -79,9 +84,15 @@ section#back-btn {
 }
 
 div.letterNav {
+  position: fixed;
   margin-top: 4em;
   max-height: 80vh;
+  animation: all 5s ease-in-out;
 }
+.scrolled {
+  margin-top: 0em !important;
+}
+
 div.letterNav div {
   margin: 0.2em auto;
 }

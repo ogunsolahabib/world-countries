@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 const Country = props => {
   const formatNumber = x => {
     var parts = x.toString().split(".");
@@ -21,7 +21,7 @@ const Country = props => {
             <img src={info.flag} alt={info.name} />
           </div>
           <div className="country-name-container content">
-            <div className="ui huge header">{info.name}</div>
+            <span className="ui huge header">{info.name}</span>
           </div>
           <div className="extra content">
             <li>
