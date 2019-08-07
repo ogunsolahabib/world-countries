@@ -11,7 +11,8 @@ class LettersBar extends React.Component {
     });
   }
   componentWillUnmount() {
-    window.removeEventListener("scroll");
+    const unscroll = () => {};
+    window.removeEventListener("scroll", unscroll);
   }
   scrollTo(letter) {
     let results = this.props.countries
