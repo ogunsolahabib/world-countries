@@ -47,21 +47,7 @@ class App extends React.Component {
               );
             }}
           />
-          {/* <Route
-            path="country/:countryName"
-            exact
-            render={props => {
-              const { countryName } = props.match.params;
-              return (
-                <CountryInfoPage
-                  countryName={countryName}
-                  switchTheme={this.switchTheme.bind(this)}
-                  stylePath={this.state.stylePath}
-                  styleMode={this.state.styleMode}
-                />
-              );
-            }}
-          /> */}
+
           <Route
             path="/country/:countryName"
             exact

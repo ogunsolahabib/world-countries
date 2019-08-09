@@ -4,8 +4,8 @@
   min-height: 100% !important;
   padding: 0 !important;
 }
-header#header {
-  margin-bottom: 3em;
+#header {
+  margin-bottom: 5em;
   max-width: 100%;
 }
 .header::before,
