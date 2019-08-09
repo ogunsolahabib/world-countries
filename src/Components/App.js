@@ -1,4 +1,5 @@
 import React from "react";
+import "../Style.css";
 import CountriesPage from "../Pages/CountriesPage";
 import CountryInfoPage from "../Pages/CountryInfoPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";

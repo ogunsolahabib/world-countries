@@ -1,105 +1,117 @@
 import React from "react";
 class LettersBar extends React.Component {
-  state = { style: {} };
-  componentDidMount() {
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 100) {
-        document.querySelector(".letterNav").classList.add("scrolled");
-      } else {
-        document.querySelector(".letterNav").classList.remove("scrolled");
-      }
-    });
+  scrollUp() {
+    window.scrollTo(0, 0);
+    document.querySelector("#search-field").focus();
   }
-  componentWillUnmount() {
-    const unscroll = () => {};
-    window.removeEventListener("scroll", unscroll);
-  }
-  scrollTo(letter) {
+  scrollToLetter(letter) {
     let results = this.props.countries
       .map(country => country.name)
       .filter(name => name.startsWith(letter));
     return "#" + results[0];
   }
+  componentDidMount() {
+    console.log(window.location.pathname);
+    window.addEventListener("scroll", e => {
+      if (window.pageYOffset > 100) {
+        document.querySelector(".letterNav").classList.add("scrolled");
+      } else if (document.querySelector(".letterNav")) {
+        document.querySelector(".letterNav").classList.remove("scrolled");
+      }
+      e.preventDefault();
+    });
+  }
+  componentWillUnmount() {
+    if (!window.location.pathname === "/") {
+      const unscroll = () => {};
+      window.removeEventListener("scroll", unscroll);
+    }
+  }
   render() {
     return (
-      <div className="letterNav" style={this.state.style}>
+      <div className="letterNav">
         <div>
-          <a href={this.scrollTo("A")}>A</a>
+          <button className="ui icon button" onClick={this.scrollUp.bind(this)}>
+            <i className="search icon" style={{ fontSize: "10px" }} />
+          </button>
         </div>
         <div>
-          <a href={this.scrollTo("B")}>B</a>
+          <a href={this.scrollToLetter("A")}>A</a>
         </div>
         <div>
-          <a href={this.scrollTo("C")}>C</a>
+          <a href={this.scrollToLetter("B")}>B</a>
         </div>
         <div>
-          <a href={this.scrollTo("D")}>D</a>
+          <a href={this.scrollToLetter("C")}>C</a>
         </div>
         <div>
-          <a href={this.scrollTo("E")}>E</a>
+          <a href={this.scrollToLetter("D")}>D</a>
         </div>
         <div>
-          <a href={this.scrollTo("F")}>F</a>
+          <a href={this.scrollToLetter("E")}>E</a>
         </div>
         <div>
-          <a href={this.scrollTo("G")}>G</a>
+          <a href={this.scrollToLetter("F")}>F</a>
         </div>
         <div>
-          <a href={this.scrollTo("H")}>H</a>
+          <a href={this.scrollToLetter("G")}>G</a>
         </div>
         <div>
-          <a href={this.scrollTo("I")}>I</a>
+          <a href={this.scrollToLetter("H")}>H</a>
         </div>
         <div>
-          <a href={this.scrollTo("J")}>J</a>
+          <a href={this.scrollToLetter("I")}>I</a>
         </div>
         <div>
-          <a href={this.scrollTo("K")}>K</a>
+          <a href={this.scrollToLetter("J")}>J</a>
         </div>
         <div>
-          <a href={this.scrollTo("L")}>L</a>
+          <a href={this.scrollToLetter("K")}>K</a>
         </div>
         <div>
-          <a href={this.scrollTo("M")}>M</a>
+          <a href={this.scrollToLetter("L")}>L</a>
         </div>
         <div>
-          <a href={this.scrollTo("N")}>N</a>
+          <a href={this.scrollToLetter("M")}>M</a>
         </div>
         <div>
-          <a href={this.scrollTo("O")}>O</a>
+          <a href={this.scrollToLetter("N")}>N</a>
         </div>
         <div>
-          <a href={this.scrollTo("P")}>P</a>
+          <a href={this.scrollToLetter("O")}>O</a>
         </div>
         <div>
-          <a href={this.scrollTo("Q")}>Q</a>
+          <a href={this.scrollToLetter("P")}>P</a>
         </div>
         <div>
-          <a href={this.scrollTo("R")}>R</a>
+          <a href={this.scrollToLetter("Q")}>Q</a>
         </div>
         <div>
-          <a href={this.scrollTo("S")}>S</a>
+          <a href={this.scrollToLetter("R")}>R</a>
         </div>
         <div>
-          <a href={this.scrollTo("T")}>T</a>
+          <a href={this.scrollToLetter("S")}>S</a>
         </div>
         <div>
-          <a href={this.scrollTo("U")}>U</a>
+          <a href={this.scrollToLetter("T")}>T</a>
         </div>
         <div>
-          <a href={this.scrollTo("V")}>V</a>
+          <a href={this.scrollToLetter("U")}>U</a>
         </div>
         <div>
-          <a href={this.scrollTo("W")}>W</a>
+          <a href={this.scrollToLetter("V")}>V</a>
         </div>
         <div>
-          <a href={this.scrollTo("X")}>X</a>
+          <a href={this.scrollToLetter("W")}>W</a>
         </div>
         <div>
-          <a href={this.scrollTo("Y")}>Y</a>
+          <a href={this.scrollToLetter("X")}>X</a>
         </div>
         <div>
-          <a href={this.scrollTo("Z")}>Z</a>
+          <a href={this.scrollToLetter("Y")}>Y</a>
+        </div>
+        <div>
+          <a href={this.scrollToLetter("Z")}>Z</a>
         </div>
       </div>
     );

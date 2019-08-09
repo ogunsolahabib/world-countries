@@ -51,7 +51,7 @@ class CountriesPage extends React.Component {
         console.log(this.state.countries);
       });
     } else if (!this.props.regionName && prevProps.regionName) {
-      this.setState({isLoading:true})
+      this.setState({ isLoading: true });
       Axios.get("https://restcountries.eu/rest/v2/all").then(response => {
         this.setState({ countries: response.data, isLoading: false });
         console.log(this.state.countries);

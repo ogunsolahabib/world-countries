@@ -1,25 +1,15 @@
+html,
 body {
   background: hsl(0, 0%, 98%) !important;
   color: hsl(200, 15%, 8%) !important;
 }
-.cards a {
-  margin: 1.5em 0 !important;
-  padding: 0 !important;
-}
-header#header {
-  margin: 0 0 1em 0;
-}
-.header::before,
-.item::before {
-  width: 0 !important;
-}
 div,
 span,
+h1,
 .letterNav a,
 .header {
   color: hsl(200, 15%, 8%);
 }
-
 div.header,
 span.header,
 div.input,
@@ -28,92 +18,20 @@ input::placeholder {
   background: inherit !important;
   color: hsl(200, 15%, 8%) !important;
 }
-div.element,
+.card,
 button.button.element,
 button.button.element:hover,
 header,
 #filter,
 #filter .menu {
-  background: #fff !important;
+  background: hsl(0, 0%, 98%) !important;
   color: hsl(200, 15%, 8%) !important;
-}
-div.ui.cards {
-  padding: 2em 0em !important;
-}
-div.card.element {
-  margin: 1em !important;
-  height: 30em !important;
-}
-div.card.element .image {
-  height: 45% !important;
-}
-div.card.element img {
-  height: 100% !important;
-  object-fit: cover;
-}
-div.country-name-container.content {
-  height: 3em !important;
-}
-div.content {
-  margin-bottom: 2em;
 }
 div.button i {
   color: hsl(200, 15%, 8%) !important;
 }
-li {
-  list-style-type: none;
-  margin-bottom: 1em;
-}
-section#back-btn {
-  margin-bottom: 5em;
-}
-#filter .menu .item {
-  background: inherit !important;
-  color: inherit !important;
-}
 #filter .menu .item:hover,
 .button:hover {
   opacity: 0.8;
-  background: #f3f3f3 !important;
-}
-div.letterNav {
-  position: fixed;
-  margin-top: 4em;
-  max-height: 80vh;
-  animation: all 5s ease-in-out;
-}
-.scrolled {
-  margin-top: 0em !important;
-}
-div.letterNav div {
-  margin: 0.2em auto;
-}
-div.ui.container.main {
-  padding: 0 !important;
-  width: 80%;
-}
-div.no-results {
-  text-align: center;
-  margin-top: 5em;
-}
-@media only screen and (max-width: 767px) {
-  div.ui.link.cards {
-    padding: 28px 5% !important;
-    margin: 1em 5% !important;
-  }
-  div.letterNav {
-    margin-top: 0px;
-    max-height: 80vh;
-  }
-  div.letterNav div {
-    margin: 3px auto;
-  }
-}
-@media only screen and (max-width: 450px) {
-  div.ui.link.cards {
-    padding: 28px 1% !important;
-  }
-  div.letterNav {
-    display: none;
-  }
+  background: hsl(207, 26%, 26%) !important;
 }

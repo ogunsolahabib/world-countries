@@ -13,17 +13,30 @@ const Country = props => {
     region: props.info.region,
     capital: props.info.capital
   };
+
   return (
-    <Link id={info.name} className="country" to={"/country/" + info.name}>
-      <div className="ui link cards">
-        <div className="card element">
-          <div className="image">
-            <img src={info.flag} alt={info.name} />
+    // <Link
+    //   id={info.name}
+    //   className="fluid card country"
+    //   to={"/country/" + info.name}
+    // >
+    <div className="card">
+      <Link
+        id={info.name}
+        className="country element"
+        to={"/country/" + info.name}
+      >
+        <div className="ui image">
+          <img src={info.flag} alt={info.name} />
+        </div>
+        <div className="country-name-container content">
+          <div
+            style={info.name.length > 19 ? { fontSize: "120%" } : null}
+            className="ui huge header name"
+          >
+            {info.name}
           </div>
-          <div className="country-name-container content">
-            <span className="ui huge header">{info.name}</span>
-          </div>
-          <div className="extra content">
+          <div className="extra">
             <li>
               <span className="ui header small">Population: </span>
               <span>{info.population}</span>
@@ -38,8 +51,9 @@ const Country = props => {
             </li>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
+    /* </Link> */
   );
 };
 export default Country;

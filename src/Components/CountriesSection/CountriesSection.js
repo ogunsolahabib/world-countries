@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from "../Loader";
 import Axios from "axios";
 
@@ -20,12 +20,12 @@ class CountriesSection extends React.Component {
       console.log(value);
       Axios.get("https://restcountries.eu/rest/v2/name/" + value)
         .then(response => {
-          this.setState({isLoading: false, countries: response.data});
+          this.setState({ isLoading: false, countries: response.data });
           console.log(response);
         })
         .catch(err => {
           console.log(err);
-          this.setState({isLoading: false, countries: []});
+          this.setState({ isLoading: false, countries: [] });
         });
       // const results = this.props.countries.filter(
       //   country => country.name.includes(value)
@@ -33,7 +33,7 @@ class CountriesSection extends React.Component {
       // console.log(results);
       // this.setState({isLoading: false, countries: results});
     } else {
-      this.setState({isLoading: false, countries: this.props.countries});
+      this.setState({ isLoading: false, countries: this.props.countries });
     }
   }
   changeName = event => {
@@ -51,6 +51,7 @@ class CountriesSection extends React.Component {
       }, 1000)
     });
   };
+
   checkLoad() {
     if (this.state.isLoading) {
       return <Loader />;
@@ -66,9 +67,10 @@ class CountriesSection extends React.Component {
       );
     }
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.value !== "" && this.state.value !== prevState.value) {
-      this.setState({isLoading: true});
+      this.setState({ isLoading: true });
       this.searchCountry(this.state.value);
     }
   }
@@ -76,11 +78,12 @@ class CountriesSection extends React.Component {
     return (
       <div className="ui container main">
         <section>
-          <div className="ui stackable grid">
+          <div id="sub-header" className="ui stackable grid">
             <div className="ui eight wide column">
               <div className="ui left icon input element">
                 <i className="search icon" />
                 <input
+                  id="search-field"
                   value={this.state.value}
                   onChange={this.changeName.bind(this)}
                   type="text"

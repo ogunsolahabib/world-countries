@@ -8,7 +8,7 @@ const Header = props => {
         type="text/css"
         href={process.env.PUBLIC_URL + "/" + props.stylePath}
       />
-      <header className="ui menu" id="header">
+      <header className="ui menu fixed" id="header">
         <div className="ui container">
           <div className="ui left item header">Where in the world?</div>
           <div className="ui right item">
