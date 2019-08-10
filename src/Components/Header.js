@@ -13,7 +13,7 @@ const Header = props => {
           <div className="ui left item header">Where in the world?</div>
           <div className="ui right item">
             <button
-              className="ui labeled icon button element"
+              className="ui labeled icon button"
               onClick={props.switchTheme}
             >
               <i className="moon icon" />

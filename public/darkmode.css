@@ -24,7 +24,8 @@ input::placeholder {
 header,
 #filter,
 #filter .menu,
-.icon {
+.icon,
+.icon.input {
   background: hsl(209, 23%, 22%) !important;
   color: #fff !important;
 }

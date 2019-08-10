@@ -19,11 +19,11 @@ class BorderCountriesSection extends React.Component {
   }
   render() {
     return (
-      <span>
+      <div>
         {this.state.names.map((cur, i) => {
           return <BorderCountry countryName={cur} key={i} />;
         })}
-      </span>
+      </div>
     );
   }
   componentDidUpdate(prevProps) {

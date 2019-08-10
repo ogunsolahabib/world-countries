@@ -46,6 +46,7 @@ li {
 }
 .back-btn {
   margin-bottom: 5em !important;
+  margin-left: 1rem !important;
 }
 #filter .menu .item {
   background: inherit !important;

@@ -85,12 +85,16 @@ class CountryInfo extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="ui stackable grid">
-                <span className="ui header six wide column">
-                  Border Countries:
-                </span>
-                <div className="ten wide column">
-                  <BorderCountriesSection alphas={this.props.country.borders} />
+              <div className="ui content">
+                <div className="ui stackable grid">
+                  <span className="ui header six wide column">
+                    Border Countries:
+                  </span>
+                  <div className="ten wide column">
+                    <BorderCountriesSection
+                      alphas={this.props.country.borders}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
