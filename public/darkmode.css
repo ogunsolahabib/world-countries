@@ -19,11 +19,12 @@ input::placeholder {
   color: #fff !important;
 }
 .card,
-button.button.element,
-button.button.element:hover,
+.ui.button,
+.ui.button:hover,
 header,
 #filter,
-#filter .menu {
+#filter .menu,
+.icon {
   background: hsl(209, 23%, 22%) !important;
   color: #fff !important;
 }

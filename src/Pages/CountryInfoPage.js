@@ -48,13 +48,9 @@ class CountryInfoPage extends React.Component {
           styleMode={this.props.styleMode}
         />
         <div className="ui container content">
-          <Link to="/">
-            <section id="back-btn">
-              <div className="ui labeled icon button element">
-                <i className="long arrow left alternate large icon" />
-                Back
-              </div>
-            </section>
+          <Link to="/" className="ui labeled icon button back-btn">
+            <i className="long arrow left alternate large icon" />
+            Back
           </Link>
           {this.checkLoad()}
         </div>
@@ -75,7 +71,6 @@ class CountryInfoPage extends React.Component {
             Axios.get("https://restcountries.eu/rest/v2/alpha/" + i).then(
               response => {
                 this.setState({ borders: response.data });
-                console.log(this.state.borders);
               }
             );
           }

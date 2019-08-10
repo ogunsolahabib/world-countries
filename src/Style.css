@@ -44,8 +44,8 @@ li {
   list-style-type: none;
   margin-bottom: 1em;
 }
-section#back-btn {
-  margin-bottom: 5em;
+.back-btn {
+  margin-bottom: 5em !important;
 }
 #filter .menu .item {
   background: inherit !important;
@@ -72,7 +72,15 @@ div.ui.container.main {
 }
 div.no-results {
   text-align: center;
-  margin-top: 5em;
+  margin-top: 20vh !important;
+}
+a.border,
+a.back-btn {
+  display: inline-block !important;
+  border: 1px solid !important;
+}
+a.border {
+  margin: 0.2em !important;
 }
 @media only screen and (max-width: 767px) {
   div.ui.link.cards {
