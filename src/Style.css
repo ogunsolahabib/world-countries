@@ -122,4 +122,10 @@ a.border {
   div.letterNav {
     margin-top: 0em;
   }
+  div.letterNav div {
+    margin: 1.5px auto;
+  }
+  .scrolled {
+    margin-top: -5em !important;
+  }
 }
