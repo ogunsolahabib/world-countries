@@ -127,6 +127,6 @@ a.border {
     margin: 1.5px auto;
   }
   .scrolled {
-    margin-bottom: -10em !important;
+    margin-top: -8em !important;
   }
 }
