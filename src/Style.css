@@ -24,6 +24,7 @@ div.ui.cards {
 .card {
   margin: 1em;
   height: 25em;
+  width: 17.5em !important;
 }
 .content {
   margin: 0 !important;

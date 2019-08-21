@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 const Country = props => {
   const formatNumber = x => {
     var parts = x.toString().split(".");
@@ -13,13 +13,15 @@ const Country = props => {
     region: props.info.region,
     capital: props.info.capital
   };
+  const resizeName = () => {
+    if (info.name.length > 26) {
+      return {fontSize: "120%"};
+    } else {
+      return {fontSize: "140%"};
+    }
+  };
 
   return (
-    // <Link
-    //   id={info.name}
-    //   className="fluid card country"
-    //   to={"/country/" + info.name}
-    // >
     <div className="card">
       <Link
         id={info.name}
@@ -31,7 +33,7 @@ const Country = props => {
         </div>
         <div className="country-name-container content">
           <div
-            style={info.name.length > 19 ? { fontSize: "120%" } : null}
+            style={info.name.length > 13 ? resizeName() : null}
             className="ui huge header name"
           >
             {info.name}

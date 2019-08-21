@@ -13,7 +13,7 @@ class LettersBar extends React.Component {
   componentDidMount() {
     console.log(window.location.pathname);
     window.addEventListener("scroll", e => {
-      if (window.pageYOffset > 100) {
+      if (document.querySelector(".letterNav") && window.pageYOffset > 100) {
         document.querySelector(".letterNav").classList.add("scrolled");
       } else if (document.querySelector(".letterNav")) {
         document.querySelector(".letterNav").classList.remove("scrolled");
@@ -32,7 +32,7 @@ class LettersBar extends React.Component {
       <div className="letterNav">
         <div>
           <button className="ui icon button" onClick={this.scrollUp.bind(this)}>
-            <i className="search icon" style={{ fontSize: "10px" }} />
+            <i className="search icon" style={{fontSize: "10px"}} />
           </button>
         </div>
         <div>
