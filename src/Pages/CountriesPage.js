@@ -22,7 +22,7 @@ class CountriesPage extends React.Component {
   }
   componentDidMount() {
     Axios.get("https://restcountries.eu/rest/v2/all").then(response => {
-      this.setState({ countries: response.data, isLoading: false });
+      this.setState({countries: response.data, isLoading: false});
       console.log(this.state.countries);
     });
   }
@@ -43,21 +43,21 @@ class CountriesPage extends React.Component {
       this.props.regionName &&
       this.props.regionName !== prevProps.regionName
     ) {
-      this.setState({ isLoading: true });
+      this.setState({isLoading: true});
       Axios.get(
         "https://restcountries.eu/rest/v2/region/" + this.props.regionName
       ).then(response => {
-        this.setState({ countries: response.data, isLoading: false });
+        this.setState({countries: response.data, isLoading: false});
         console.log(this.state.countries);
       });
     } else if (!this.props.regionName && prevProps.regionName) {
-      this.setState({ isLoading: true });
+      this.setState({isLoading: true});
       Axios.get("https://restcountries.eu/rest/v2/all").then(response => {
-        this.setState({ countries: response.data, isLoading: false });
+        this.setState({countries: response.data, isLoading: false});
         console.log(this.state.countries);
       });
     }
   }
 }
-CountriesPage.defaultProps = { regionName: null };
+CountriesPage.defaultProps = {regionName: null};
 export default CountriesPage;

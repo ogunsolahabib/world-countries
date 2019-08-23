@@ -4,17 +4,26 @@
   min-height: 100% !important;
   padding: 0 !important;
 }
+
 #header {
-  margin-bottom: 5em;
-  max-width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 200;
 }
 .header::before,
 .item::before {
   width: 0 !important;
 }
-
+#header div.left.item.header {
+  border: none;
+}
+.header a {
+  color: inherit;
+}
 div.ui.container.main {
-  margin-top: 5em;
+  margin-top: 7em;
+  width: 80%;
 }
 
 div.ui.cards {
@@ -66,18 +75,15 @@ div.letterNav {
 }
 
 div.letterNav div {
-  margin: 0.2em auto;
+  margin: 0.1em auto;
 }
-div.ui.container.main {
-  padding: 0 !important;
-  width: 80%;
-}
+
 div.no-results {
   text-align: center;
   margin-top: 20vh !important;
 }
 a.border,
-a.back-btn {
+button.back-btn {
   display: inline-block !important;
   border: 1px solid !important;
 }

@@ -48,7 +48,7 @@ class CountryInfoPage extends React.Component {
           stylePath={this.props.stylePath}
           styleMode={this.props.styleMode}
         />
-        <div className="ui container content">
+        <div className="ui container main">
           <button
             onClick={() =>
               this.props.history ? this.props.history.goBack() : null
