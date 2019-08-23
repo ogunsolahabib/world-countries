@@ -2,7 +2,7 @@ import React from "react";
 import "../Style.css";
 import CountriesPage from "../Pages/CountriesPage";
 import CountryInfoPage from "../Pages/CountryInfoPage";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 class App extends React.Component {
   state = {
     stylePath: "darkmode.css",
@@ -10,9 +10,9 @@ class App extends React.Component {
   };
   switchTheme() {
     if (this.state.stylePath === "darkmode.css") {
-      this.setState({stylePath: "lightmode.css", styleMode: "Light"});
+      this.setState({ stylePath: "lightmode.css", styleMode: "Light" });
     } else {
-      this.setState({stylePath: "darkmode.css", styleMode: "Dark"});
+      this.setState({ stylePath: "darkmode.css", styleMode: "Dark" });
     }
   }
   render() {
@@ -36,7 +36,7 @@ class App extends React.Component {
             path="/region/:regionName"
             exact
             render={props => {
-              const {regionName} = props.match.params;
+              const { regionName } = props.match.params;
               return (
                 <CountriesPage
                   regionName={regionName}
@@ -52,7 +52,7 @@ class App extends React.Component {
             path="/country/:countryName"
             exact
             render={props => {
-              const {countryName} = props.match.params;
+              const { countryName } = props.match.params;
               return (
                 <CountryInfoPage
                   countryName={countryName}
