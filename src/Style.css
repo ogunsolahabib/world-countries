@@ -109,6 +109,9 @@ a.border {
   }
 }
 @media only screen and (max-width: 520px) {
+  header .ui.header {
+    font-size: 1rem !important;
+  }
   .wide .input.element {
     width: 100%;
   }
