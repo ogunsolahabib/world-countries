@@ -33,7 +33,7 @@ div.ui.cards {
 .card {
   margin: 1em;
   height: 25em;
-  width: 17.5em !important;
+  width: 16em !important;
 }
 .content {
   margin: 0 !important;
@@ -71,7 +71,7 @@ div.letterNav {
   right: 10%;
 }
 .scrolled {
-  margin-top: 0em !important;
+  margin-top: -2em !important;
 }
 
 div.letterNav div {
@@ -91,7 +91,7 @@ a.border {
   margin: 0.2em !important;
 }
 @media only screen and (max-width: 767px) {
-  div.ui.link.cards {
+  div.ui.cards {
     padding: 28px 5% !important;
     margin: 1em 5% !important;
   }
@@ -127,12 +127,12 @@ a.border {
   }
 
   div.letterNav {
-    margin-top: 0em;
+    margin-top: -4em;
   }
   div.letterNav div {
-    margin: 1.5px auto;
+    margin: 0.8px auto;
   }
   .scrolled {
-    margin-top: -8em !important;
+    margin-top: -9em !important;
   }
 }

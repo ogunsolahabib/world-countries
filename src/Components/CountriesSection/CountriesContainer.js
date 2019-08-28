@@ -6,14 +6,14 @@ class CountriesContainer extends React.Component {
     if (this.props.countries.length > 0) {
       return (
         <div className="ui grid">
-          <div className="thirteen wide column">
+          <div className="fourteen wide column">
             <div className="ui stackable cards">
               {this.props.countries.map((country, i) => {
                 return <Country info={country} key={i} />;
               })}
             </div>
           </div>
-          <div className="three wide column">
+          <div className="two wide column">
             <LettersBar countries={this.props.countries} />
           </div>
         </div>
