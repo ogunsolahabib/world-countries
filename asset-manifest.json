@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/world-countries/static/css/main.7797faef.chunk.css",
-    "main.js": "/world-countries/static/js/main.6649d719.chunk.js",
-    "main.js.map": "/world-countries/static/js/main.6649d719.chunk.js.map",
+    "main.js": "/world-countries/static/js/main.3c966aa4.chunk.js",
+    "main.js.map": "/world-countries/static/js/main.3c966aa4.chunk.js.map",
     "runtime~main.js": "/world-countries/static/js/runtime~main.c4bc1bef.js",
     "runtime~main.js.map": "/world-countries/static/js/runtime~main.c4bc1bef.js.map",
-    "static/js/2.97946dda.chunk.js": "/world-countries/static/js/2.97946dda.chunk.js",
-    "static/js/2.97946dda.chunk.js.map": "/world-countries/static/js/2.97946dda.chunk.js.map",
+    "static/js/2.1affb0e8.chunk.js": "/world-countries/static/js/2.1affb0e8.chunk.js",
+    "static/js/2.1affb0e8.chunk.js.map": "/world-countries/static/js/2.1affb0e8.chunk.js.map",
     "index.html": "/world-countries/index.html",
-    "precache-manifest.890d438a7f50535782111e2575c00cff.js": "/world-countries/precache-manifest.890d438a7f50535782111e2575c00cff.js",
+    "precache-manifest.8480e3ecdd044af296ab9e333f567dae.js": "/world-countries/precache-manifest.8480e3ecdd044af296ab9e333f567dae.js",
     "service-worker.js": "/world-countries/service-worker.js",
     "static/css/main.7797faef.chunk.css.map": "/world-countries/static/css/main.7797faef.chunk.css.map"
   }
