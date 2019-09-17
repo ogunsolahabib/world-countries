@@ -139,6 +139,11 @@ a.border {
   }
   div.letterNav div {
     margin: 0.8px auto;
+    height: 3vh;
+    font-size: 2vh;
+  }
+  div.letterNav .icon.button {
+    padding: 5px 7px;
   }
   .scrolled {
     margin-top: -9em !important;
