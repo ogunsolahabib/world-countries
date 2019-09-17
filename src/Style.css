@@ -71,11 +71,11 @@ div.letterNav {
   right: 10%;
 }
 .scrolled {
-  margin-top: 0em !important;
+  margin-top: -4em !important;
 }
 
 div.letterNav div {
-  margin: 0.1em auto;
+  margin: 0.2px auto;
 }
 
 div.no-results {
@@ -105,7 +105,7 @@ a.border {
     max-height: 80vh;
   }
   div.letterNav div {
-    margin: 3px auto;
+    margin: 1px auto;
   }
 }
 @media only screen and (max-width: 520px) {
