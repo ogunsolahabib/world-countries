@@ -1,5 +1,6 @@
 import React from "react";
 import BorderCountriesSection from "./BorderCountriesSection";
+import Map from "./Map";
 class CountryInfo extends React.Component {
   // console.log(props.country);
 
@@ -19,7 +20,9 @@ class CountryInfo extends React.Component {
       capital: this.props.country.capital,
       topLevelDomain: this.props.country.topLevelDomain[0],
       currencies: this.props.country.currencies[0].name,
-      languages: this.props.country.languages
+      languages: this.props.country.languages,
+      lat: this.props.country.latlng[0],
+      lng: this.props.country.latlng[1]
     };
     return (
       <div>
@@ -97,6 +100,12 @@ class CountryInfo extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
+            <div
+              className="sixteen wide column"
+              style={{height: "90vh", marginBottom: "20vh"}}
+            >
+              <Map lat={info.lat} lng={info.lng} />
             </div>
           </div>
         </section>
