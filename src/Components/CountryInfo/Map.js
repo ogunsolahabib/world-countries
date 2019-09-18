@@ -2,7 +2,7 @@ import React from "react";
 import {Map, GoogleApiWrapper} from "google-maps-react";
 
 const mapStyles = {
-  width: "100%",
+  width: "95%",
   height: "100%"
 };
 
@@ -18,21 +18,19 @@ export class MapContainer extends React.Component {
     console.log(this.state.loaded);
 
     return (
-      <div>
-        <Map
-          google={this.props.google}
-          zoom={6}
-          style={mapStyles}
-          initialCenter={{
-            lat: this.props.lat,
-            lng: this.props.lng
-          }}
-          center={{
-            lat: this.state.lat,
-            lng: this.state.lng
-          }}
-        />
-      </div>
+      <Map
+        google={this.props.google}
+        zoom={6}
+        style={mapStyles}
+        initialCenter={{
+          lat: this.props.lat,
+          lng: this.props.lng
+        }}
+        center={{
+          lat: this.state.lat,
+          lng: this.state.lng
+        }}
+      />
     );
   }
   shouldComponentUpdate(nextProps, nextState) {

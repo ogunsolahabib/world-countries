@@ -27,7 +27,7 @@ class CountryInfo extends React.Component {
     return (
       <div>
         <section id="country-info">
-          <div className="ui container stackable grid ">
+          <div className="ui container stackable grid">
             <div className="eight wide column">
               <div className="ui image">
                 <img src={info.flag} alt={info.name} />
@@ -103,7 +103,7 @@ class CountryInfo extends React.Component {
             </div>
             <div
               className="sixteen wide column"
-              style={{height: "90vh", marginBottom: "20vh"}}
+              style={{height: "80vh", marginBottom: "20vh"}}
             >
               <Map lat={info.lat} lng={info.lng} />
             </div>
