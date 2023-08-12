@@ -22,7 +22,11 @@ class CountriesPage extends React.Component {
   }
   componentDidMount() {
     Axios.get("https://restcountries.com/v3.1/all").then((response) => {
-      this.setState({ countries: response.data, isLoading: false });
+      if(response.data.length){
+   
+      const countries= response.data.map(item=>({...item, name: item.name.common}))
+      this.setState({ countries, isLoading: false });
+    }
     });
   }
   render() {
@@ -47,11 +51,13 @@ class CountriesPage extends React.Component {
         "https://restcountries.com/v3.1/region/" + this.props.regionName
       ).then((response) => {
         this.setState({ countries: response.data, isLoading: false });
+        console.log(this.state.countries);
       });
     } else if (!this.props.regionName && prevProps.regionName) {
       this.setState({ isLoading: true });
       Axios.get("https://restcountries.com/v3.1/all").then((response) => {
         this.setState({ countries: response.data, isLoading: false });
+        console.log(this.state.countries);
       });
     }
   }
