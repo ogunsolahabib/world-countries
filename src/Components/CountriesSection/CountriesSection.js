@@ -1,7 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from "../Loader";
-// import Axios from "axios";
+import Axios from "axios";
 
 import CountriesContainer from "./CountriesContainer";
 // import Axios from "axios";
@@ -12,31 +12,23 @@ class CountriesSection extends React.Component {
     value: "",
     typing: false,
     typingTimeout: 0,
-    countries: []
+    countries: [],
   };
 
   searchCountry(value) {
     if (value !== "") {
-      console.log(value);
-      // Axios.get("https://restcountries.eu/rest/v2/name/" + value)
-      //   .then(response => {
-      //     this.setState({ isLoading: false, countries: response.data });
-      //     console.log(response);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //     this.setState({ isLoading: false, countries: [] });
-      //   });
-      const results = this.props.countries.filter(country =>
-        country.name.toLowerCase().includes(value.toLowerCase())
-      );
-      console.log(results);
-      this.setState({isLoading: false, countries: results});
+      Axios.get("https://restcountries.com/v3.1/name/" + value)
+        .then((response) => {
+          this.setState({ isLoading: false, countries: response.data });
+        })
+        .catch((err) => {
+          this.setState({ isLoading: false, countries: [] });
+        });
     } else {
-      this.setState({isLoading: false, countries: this.props.countries});
+      this.setState({ isLoading: false, countries: this.props.countries });
     }
   }
-  changeName = event => {
+  changeName = (event) => {
     const self = this;
 
     if (self.state.typingTimeout) {
@@ -46,9 +38,9 @@ class CountriesSection extends React.Component {
     self.setState({
       value: event.target.value,
       typing: false,
-      typingTimeout: setTimeout(function() {
+      typingTimeout: setTimeout(function () {
         self.searchCountry(self.state.value);
-      }, 1000)
+      }, 1000),
     });
   };
 
@@ -70,7 +62,7 @@ class CountriesSection extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.value !== "" && this.state.value !== prevState.value) {
-      this.setState({isLoading: true});
+      this.setState({ isLoading: true });
       this.searchCountry(this.state.value);
     }
   }

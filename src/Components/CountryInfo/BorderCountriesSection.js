@@ -5,17 +5,16 @@ import Axios from "axios";
 class BorderCountriesSection extends React.Component {
   state = { names: [] };
   componentDidMount() {
-    for (let i = 0; i < this.props.alphas.length; i++) {
+    for (let i = 0; i < (this.props.alphas || []).length; i++) {
       Axios.get(
-        "https://restcountries.eu/rest/v2/alpha/" + this.props.alphas[i]
-      ).then(response => {
-        console.log(response);
-        this.setState({
-          names: [...this.state.names, response.data.name]
-        });
+        "https://restcountries.com/v3.1/alpha/" + this.props.alphas[i]
+      ).then((response) => {
+        response.data &&
+          this.setState({
+            names: [...this.state.names, response.data[0].name.official],
+          });
       });
     }
-    console.log(this.state.names);
   }
   render() {
     return (
@@ -31,11 +30,10 @@ class BorderCountriesSection extends React.Component {
       this.setState({ names: [] });
       for (let i = 0; i < this.props.alphas.length; i++) {
         Axios.get(
-          "https://restcountries.eu/rest/v2/alpha/" + this.props.alphas[i]
-        ).then(response => {
-          console.log(response);
+          "https://restcountries.com/v3.1/alpha/" + this.props.alphas[i]
+        ).then((response) => {
           this.setState({
-            names: [...this.state.names, response.data.name]
+            names: [...this.state.names, response.data.name],
           });
         });
       }

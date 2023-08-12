@@ -1,33 +1,33 @@
 import React from "react";
 import BorderCountriesSection from "./BorderCountriesSection";
-import Map from "./Map";
 class CountryInfo extends React.Component {
-  // console.log(props.country);
-
   render() {
-    const formatNumber = x => {
+    const formatNumber = (x) => {
       var parts = x.toString().split(".");
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return parts.join(".");
     };
-    const info = {
-      flag: this.props.country.flag,
-      name: this.props.country.name,
-      nativeName: this.props.country.nativeName,
-      population: formatNumber(this.props.country.population),
-      region: this.props.country.region,
-      subRegion: this.props.country.subRegion,
-      capital: this.props.country.capital,
-      topLevelDomain: this.props.country.topLevelDomain[0],
-      currencies: this.props.country.currencies[0].name,
-      languages: this.props.country.languages,
-      lat: this.props.country.latlng[0],
-      lng: this.props.country.latlng[1]
-    };
+    const info = this.props.country
+      ? {
+          flag: this.props.country.flags.svg,
+          name: this.props.country.name.official,
+          nativeName: Object.values(this.props.country.name.nativeName)[0]
+            .official,
+          population: formatNumber(this.props.country.population),
+          region: this.props.country.region,
+          subRegion: this.props.country.subRegion,
+          capital: this.props.country.capital,
+          topLevelDomain: this.props.country.tld && this.props.country.tld[0],
+          currencies:
+            this.props.country.currencies.ISK &&
+            this.props.country.currencies.ISK.name,
+          languages: Object.values(this.props.country.languages),
+        }
+      : {};
     return (
       <div>
         <section id="country-info">
-          <div className="ui container stackable grid">
+          <div className="ui container stackable grid ">
             <div className="eight wide column">
               <div className="ui image">
                 <img src={info.flag} alt={info.name} />
@@ -68,7 +68,7 @@ class CountryInfo extends React.Component {
                       <span className="ui small header">
                         Top Level Domain:{" "}
                       </span>
-                      {info.topLevelDomian}
+                      {info.topLevelDomain}
                     </li>
                     <li className="item">
                       <span className="ui small header">Currencies: </span>
@@ -76,14 +76,14 @@ class CountryInfo extends React.Component {
                     </li>
                     <li className="item">
                       <span className="ui small header">Languages: </span>
-                      {info.languages.map((cur, i) => {
-                        return (
-                          <span key={i}>
-                            {cur.name}{" "}
-                            {i < info.languages.length - 1 ? ", " : ""}
-                          </span>
-                        );
-                      })}
+                      {Array.isArray(info.languages) &&
+                        info.languages.map((cur, i) => {
+                          return (
+                            <span key={i}>
+                              {cur} {i < info.languages.length - 1 ? ", " : ""}
+                            </span>
+                          );
+                        })}
                     </li>
                   </div>
                 </div>
@@ -100,12 +100,6 @@ class CountryInfo extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="sixteen wide column"
-              style={{height: "80vh", marginBottom: "20vh"}}
-            >
-              <Map lat={info.lat} lng={info.lng} />
             </div>
           </div>
         </section>

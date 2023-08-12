@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "../Components/Header";
 import Loader from "../Components/Loader";
-import {withRouter} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import CountryInfo from "../Components/CountryInfo/CountryInfo";
 import Axios from "axios";
 class CountryInfoPage extends React.Component {
-  state = {isLoading: true, country: null, borders: []};
+  state = { isLoading: true, country: null, borders: [] };
   checkLoad() {
     if (this.state.isLoading) {
       return <Loader />;
@@ -19,21 +19,18 @@ class CountryInfoPage extends React.Component {
       );
     }
   }
-  onBackBtnClick = () => {};
   componentDidMount() {
     Axios.get(
-      "https://restcountries.eu/rest/v2/name/" +
+      "https://restcountries.com/v3.1/name/" +
         this.props.countryName +
         "?fullText=true"
-    ).then(response => {
+    ).then((response) => {
       if (response) {
-        this.setState({isLoading: false, country: response.data[0]});
-        console.log(this.state.country);
+        this.setState({ isLoading: false, country: response.data[0] });
         for (let i = 0; i < this.state.country.borders; i++) {
-          Axios.get("https://restcountries.eu/rest/v2/alpha/" + i).then(
-            response => {
-              this.setState({borders: response.data});
-              console.log(this.state.borders);
+          Axios.get("https://restcountries.com/v3.1/alpha/" + i).then(
+            (response) => {
+              this.setState({ borders: response.data });
             }
           );
         }
@@ -48,17 +45,11 @@ class CountryInfoPage extends React.Component {
           stylePath={this.props.stylePath}
           styleMode={this.props.styleMode}
         />
-        <div className="ui container main">
-          <button
-            onClick={() =>
-              this.props.history ? this.props.history.goBack() : null
-            }
-            className="ui labeled icon button back-btn"
-          >
+        <div className="ui container content">
+          <Link to="/" className="ui labeled icon button back-btn">
             <i className="long arrow left alternate large icon" />
             Back
-          </button>
-
+          </Link>
           {this.checkLoad()}
         </div>
       </div>
@@ -67,17 +58,16 @@ class CountryInfoPage extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.countryName !== prevProps.countryName) {
       Axios.get(
-        "https://restcountries.eu/rest/v2/name/" +
+        "https://restcountries.com/v3.1/name/" +
           this.props.countryName +
           "?fullText=true"
-      ).then(response => {
+      ).then((response) => {
         if (response) {
-          this.setState({isLoading: false, country: response.data[0]});
-          console.log(this.state.country);
+          this.setState({ isLoading: false, country: response.data[0] });
           for (let i = 0; i < this.state.country.borders; i++) {
-            Axios.get("https://restcountries.eu/rest/v2/alpha/" + i).then(
-              response => {
-                this.setState({borders: response.data});
+            Axios.get("https://restcountries.com/v3.1/alpha/" + i).then(
+              (response) => {
+                this.setState({ borders: response.data });
               }
             );
           }
@@ -86,5 +76,4 @@ class CountryInfoPage extends React.Component {
     }
   }
 }
-export default withRouter(CountryInfoPage);
-// export default CountryInfoPage;
+export default CountryInfoPage;
