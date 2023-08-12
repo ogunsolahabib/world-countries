@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
-import Axios from "axios";
+// import Axios from "axios";
 
 import CountriesContainer from "./CountriesContainer";
 // import Axios from "axios";
@@ -17,13 +17,11 @@ class CountriesSection extends React.Component {
 
   searchCountry(value) {
     if (value !== "") {
-      Axios.get("https://restcountries.com/v3.1/name/" + value)
-        .then((response) => {
-          this.setState({ isLoading: false, countries: response.data });
-        })
-        .catch((err) => {
-          this.setState({ isLoading: false, countries: [] });
-        });
+      const results = this.props.countries.filter((country) =>
+        country.name.toLowerCase().includes(value.toLowerCase())
+      );
+      
+      this.setState({ isLoading: false, countries: results });
     } else {
       this.setState({ isLoading: false, countries: this.props.countries });
     }

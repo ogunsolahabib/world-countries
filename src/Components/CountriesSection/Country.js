@@ -1,23 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
-const Country = (props) => {
-  const formatNumber = (x) => {
+import {Link} from "react-router-dom";
+const Country = props => {
+  const formatNumber = x => {
     var parts = x.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
   };
   const info = {
-    flag: props.info.flags.svg,
-    name: props.info.name.common,
+    flag: props.info.flags.png,
+    name: props.info.name,
     population: formatNumber(props.info.population),
     region: props.info.region,
-    capital: props.info.capital,
+    capital: props.info.capital
   };
   const resizeName = () => {
     if (info.name.length > 26) {
-      return { fontSize: "120%" };
+      return {fontSize: "120%"};
     } else {
-      return { fontSize: "140%" };
+      return {fontSize: "140%"};
     }
   };
 

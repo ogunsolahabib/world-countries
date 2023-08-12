@@ -6,12 +6,14 @@ class LettersBar extends React.Component {
   }
   scrollToLetter(letter) {
     let results = this.props.countries
-      .map((country) => country.name.official)
-      .filter((name) => name.startsWith(letter));
+      .map(country => country.name)
+      .filter(name =>
+        name.startsWith(letter));
     return "#" + results[0];
   }
   componentDidMount() {
-    window.addEventListener("scroll", (e) => {
+    console.log(window.location.pathname);
+    window.addEventListener("scroll", e => {
       if (document.querySelector(".letterNav") && window.pageYOffset > 100) {
         document.querySelector(".letterNav").classList.add("scrolled");
       } else if (document.querySelector(".letterNav")) {
@@ -31,7 +33,7 @@ class LettersBar extends React.Component {
       <div className="letterNav">
         <div>
           <button className="ui icon button" onClick={this.scrollUp.bind(this)}>
-            <i className="search icon" style={{ fontSize: "10px" }} />
+            <i className="search icon" style={{fontSize: "10px"}} />
           </button>
         </div>
         <div>
